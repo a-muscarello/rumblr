@@ -1,0 +1,16 @@
+
+
+<a href="/user/<%= @yuser.id %>"><h1><%= @user.first_name %> <%= @user.last_name %></h1></a>
+
+<form action="/user/<%= @user.id %>" method="POST">
+	<input type="hidden" name="_method" value="PUT">
+	<input type="text" name="birthday" value="<%= @user.birthday %>">
+	<input type="text" name="email" value="<%= @user.email %>">
+	<input type="text" name="password" value="<%= @user.password %>">
+	<button type="submit">Edit</button>
+</form>
+
+<form action="/user/<%= @user.id %>" method="POST">
+	<input type="hidden" name="_method" value="DELETE">
+	<button type="submit">Delete</button>
+</form>
