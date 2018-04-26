@@ -1,6 +1,7 @@
 
+<div class="hero_image"></div>
 
-<a href="/user/<%= @yuser.id %>"><h1><%= @user.first_name %> <%= @user.last_name %></h1></a>
+<a href="/user/<%= @user.id %>"><h1><%= @user.first_name %> <%= @user.last_name %></h1></a>
 
 <form action="/user/<%= @user.id %>" method="POST">
 	<input type="hidden" name="_method" value="PUT">
@@ -10,6 +11,8 @@
 	<button type="submit">Edit</button>
 </form>
 
+
+# When someone submits this form, my app in app.rb is going to look for /user/:id and submit a delete request 
 <form action="/user/<%= @user.id %>" method="POST">
 	<input type="hidden" name="_method" value="DELETE">
 	<button type="submit">Delete</button>
