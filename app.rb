@@ -51,7 +51,13 @@ put '/user/:id' do
     @this_user.update(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
 end
 
-get '/user/:id/edit' do
+get '/edit' do
+    @this_user = User.find(session[:id])
+    redirect '/users.rb'
+    # erb :edit
+end
+
+put '/user/:id/edit' do
     @this_user = User.find(params[:id])
     erb :edit
 end
@@ -69,11 +75,16 @@ post '/post/create/new' do
     redirect '/post'
 end
 
+get '/new_post' do
+    erb :new_post
+end
+
 #to edit the post
 get '/post/:user_id' do
     @posts = Post.find(params[:user_id])
     erb :post
 end
+
 
 private 
 

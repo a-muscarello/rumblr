@@ -1,5 +1,5 @@
 
-<form action="/user/<%= @this_user.id %>" method="POST">
+<form action="/user/user.id" method="POST">
 	<input type="hidden" name="_method" value="PUT">
 	<input type="text" name="birthday" value="<%= @this_user.birthday %>">
 	<input type="text" name="email" value="<%= @this_user.email %>">
@@ -8,8 +8,8 @@
 </form>
 
 
-# When someone submits this form, my app in app.rb is going to look for /user/:id and submit a delete request 
-<form action="/user/<%= @this_user.id %>" method="POST">
+
+<form action="/user/user.id" method="POST">
 	<input type="hidden" name="_method" value="DELETE">
 	<button type="submit">Delete</button>
 </form>

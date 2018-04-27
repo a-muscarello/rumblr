@@ -1,10 +1,15 @@
 
-# new posts should have name, content and user id to facilitate search 
+<form method="POST" action="/post/new_post">
+    <input type="text" name="post_name" placeholder="Post name">
+    <input type="text" name="user_id" placeholder="User ID">
+    <input type="image" src="img_submit.jpg" alt="Submit" width="48" height="48">
+
+</form>
 
 <form method="POST" action="/post/new_post">
-    <input type="text" name="post_name" placeholder="post_name">
-    <input type="text" name="post_content" placeholder="post_content">
-    <input type="text" name="user_id" placeholder="user_id">
+    <textarea name="myTextBox" cols="50" rows="20">
 
-    <button type="submit"></button>
+    </textarea>
+
+    <button type="submit">Submit</button>
 </form>
