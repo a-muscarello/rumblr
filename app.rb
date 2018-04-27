@@ -6,6 +6,7 @@ require_relative './models/user'
 require_relative './models/post'
 
 set :database, {adapter: 'postgresql', database: 'rubytumbler'}
+
 enable :sessions
 
 get '/' do
@@ -16,6 +17,10 @@ get '/signup' do
     erb :signup
 end
 
+get '/thankyou' do
+    @user = User.find(session[:id])
+    erb :thankyou
+end
 
 post '/user/login' do 
     @user = User.find_by(email: params[:email], password: params[:password])
@@ -28,19 +33,16 @@ post '/user/login' do
     end 
 end
 
+post '/signup' do
+    @newuser = User.create(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
+    session[:id] = @newuser.id
+    redirect '/thankyou'
+end
 
 get '/profile' do
     @user = User.find(session[:id])
     @posts = Post.where(user_id: session[:id])
     erb :profile
-end
-
-
-get '/logout' do
-    #Clear all sessions  
-    session.clear
-    #You can also just set the session to nil like this : session[:id] = nil
-    redirect '/login'
 end
 
 
@@ -61,15 +63,26 @@ delete '/user/:id' do
 end
 
 
-get '/post/create/new_post' do
+post '/post/create/new' do
     Post.create(post_name: params[:post_name], post_content: params[:post_content])
     session[:id] = @newuser.id
     redirect '/post'
 end
 
 #to edit the post
-get '/post/:user_id/post' do
+get '/post/:user_id' do
     @posts = Post.find(params[:user_id])
     erb :post
 end
+
+private 
+
+def user_exists?
+    (session[:id] != nil) ? true : false
+end
+
+def current_user
+    User.find(session[:id])
+end
+
 

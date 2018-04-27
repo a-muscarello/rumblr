@@ -1,23 +1,20 @@
 # posts should open up to
 
 <h2>Post</h2>
-<div class="text">
-	<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores provident, similique sunt in culpa qui officia deserunt mollitia animi. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.</p>
-</div>
 
 <div class="row">
 	<div class="gallery">		
-	<% @posts.each do |posts| %>
-		<h1> <%= @posts.name %> </h1>
-		<h1> <%= @posts.content %> <h1>
-		<h1> <%= @posts.user_id %> </h1>
-		# <img class="responsive-img" src="<%= #.image %>">
+	<% @user.each do |post| %>
+		<h1> <%= @user.post_name %> </h1>
+		<h1> <%= @user.post_content %> </h1>
+		<h1> <%= @user.user_id %> </h1>
+		<img class="responsive-img" src="<%= beijing.image %>">
 	<% end %>  
 	</div>
 </div>
 
 
-def self.search(search)
-	where("name LIKE ?", "%#{search}%") 
-	where("content LIKE ?", "%#{search}%")
-end
+# def self.search(search)
+# 	where("name LIKE ?", "%#{search}%") 
+# 	where("content LIKE ?", "%#{search}%")
+# end

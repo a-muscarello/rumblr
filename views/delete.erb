@@ -1,0 +1,10 @@
+
+def destroy
+    User.transaction do
+      @user.posts.each do |p| 
+        p.comments.destroy_all
+      end
+      @user.comments.destroy_all
+      @user.posts.destroy_all
+      @user.destroy
+end
