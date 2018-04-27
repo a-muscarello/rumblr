@@ -1,4 +1,17 @@
 
-<div class="hero_image"></div>
-
 <h1> Welcome to TravelBlog <%= @user.first_name %> </h1>
+
+
+#when redirected to blogger page, will show all the works by this blogger.
+<h2>My Stuff</h2>
+
+<div class="row">
+	<div class="gallery">		
+	<% @posts.each do |posts| %>
+		<h1> <%= @posts.post_name %> </h1>
+		<h1> <%= @posts.post_content %> <h1>
+		<h1> <%= @posts.user_id %> </h1>
+	
+	<% end %>  
+	</div>
+</div>

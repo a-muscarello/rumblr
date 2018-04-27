@@ -1,7 +1,10 @@
 
-<form method="POST" action="/post/new">
-    <input type="text" name="post_name" placeholder="post name">
-    <input type="text" name="post_content" placeholder="post content">
+# new posts should have name, content and user id to facilitate search 
+
+<form method="POST" action="/post/new_post">
+    <input type="text" name="post_name" placeholder="post_name">
+    <input type="text" name="post_content" placeholder="post_content">
+    <input type="text" name="user_id" placeholder="user_id">
 
     <button type="submit"></button>
 </form>

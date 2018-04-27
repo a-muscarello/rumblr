@@ -9,6 +9,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
 end
 
 
+ost Controller
+
 def index
   @posts = Post.all
   if params[:search]
