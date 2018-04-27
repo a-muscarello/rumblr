@@ -51,6 +51,11 @@ put '/user/:id' do
     @this_user.update(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
 end
 
+get '/users.rb' do
+    @this_user = User.find(session[:id])
+end
+
+
 get '/edit' do
     @this_user = User.find(session[:id])
     redirect '/users.rb'
@@ -70,18 +75,24 @@ end
 
 
 post '/post/create/new' do
-    Post.create(post_name: params[:post_name], post_content: params[:post_content])
-    session[:id] = @newuser.id
-    redirect '/post'
+    Post.create(post_name: params[:post_name], post_content: params[:post_content], user_id:session[:id])
+    redirect '/profile'
 end
 
 get '/new_post' do
     erb :new_post
 end
 
+# post '/post/submit' do
+#     #create the post tot he database
+#     Post.create(params[:user_id])
+#     redirect '/post'
+# end
+
 #to edit the post
 get '/post/:user_id' do
     @posts = Post.find(params[:user_id])
+    @categories = Category.order(post: :desc)
     erb :post
 end
 
