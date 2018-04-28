@@ -3,5 +3,25 @@
 @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Allura');
 
 
+.nav-link {
+    display: inline-block;
+}
 
+.navbar-expand .navbar-nav .nav-link {
+    padding-right: 25px;
+    padding-left: 10px;
+}
 
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 175px;
+}
+
+img {
+    vertical-align: initial;
+    border-left-style: inherit;
+}

@@ -13,6 +13,14 @@ get '/' do
     erb :index
 end
 
+get '/home' do
+    erb :index
+end
+
+get '/about' do
+    erb :about
+end
+
 get '/signup' do
     erb :signup
 end
@@ -28,7 +36,6 @@ post '/user/login' do
         session[:id] = @user.id
         redirect '/profile'
     else   
-        #Could not find this user. Redirecting them to the signup page
         redirect '/signup'
     end 
 end
@@ -51,15 +58,15 @@ put '/user/:id' do
     @this_user.update(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
 end
 
-get '/users.rb' do
-    @this_user = User.find(session[:id])
-end
+# get '/users.rb' do
+#     @this_user = User.find(session[:id])
+#     erb :edit
+# end
 
 
-get '/edit' do
-    @this_user = User.find(session[:id])
+put '/edit' do
+    User.find(session[:id])
     redirect '/users.rb'
-    # erb :edit
 end
 
 put '/user/:id/edit' do
@@ -67,12 +74,15 @@ put '/user/:id/edit' do
     erb :edit
 end
 
-#delete user id
+
 delete '/user/:id' do
     User.destryoy(params[:id])
     redirect '/user'
 end
 
+get '/logout' do
+    erb :logout
+end
 
 post '/post/create/new' do
     Post.create(post_name: params[:post_name], post_content: params[:post_content], user_id:session[:id])
@@ -83,13 +93,7 @@ get '/new_post' do
     erb :new_post
 end
 
-# post '/post/submit' do
-#     #create the post tot he database
-#     Post.create(params[:user_id])
-#     redirect '/post'
-# end
 
-#to edit the post
 get '/post/:user_id' do
     @posts = Post.find(params[:user_id])
     @categories = Category.order(post: :desc)
