@@ -7,8 +7,10 @@
     <button type="submit" >  <a class="my-link" href="/edit">Edit</a></button>
 	
 	<button type="logout" >  <a class="my-link" href="/logout">Logout</a></button>
-    <br>
 
+	<button type="delete" >  <a class="my-link" href="/delete">Delete</a></button>
+	<br>
+	
 	<% @posts.each do |a| %>
 		<h1> <%= a.post_name %> </h1>
 		<h5>User ID: <%= a.user_id %></h5>

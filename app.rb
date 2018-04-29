@@ -58,16 +58,20 @@ put '/user/:id' do
     @this_user.update(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
 end
 
+get '/search' do
+    erb :search
+end
+
 # get '/users.rb' do
 #     @this_user = User.find(session[:id])
 #     erb :edit
 # end
 
 
-put '/edit' do
-    User.find(session[:id])
-    redirect '/users.rb'
-end
+# put '/edit' do
+#     User.find(session[:id])
+#     redirect '/users.rb'
+# end
 
 put '/user/:id/edit' do
     @this_user = User.find(params[:id])
@@ -75,10 +79,10 @@ put '/user/:id/edit' do
 end
 
 
-delete '/user/:id' do
-    User.destryoy(params[:id])
-    redirect '/user'
+get '/new_post' do
+    erb :new_post
 end
+
 
 get '/logout' do
     erb :logout
@@ -89,17 +93,21 @@ post '/post/create/new' do
     redirect '/profile'
 end
 
-get '/new_post' do
-    erb :new_post
-end
-
-
 get '/post/:user_id' do
     @posts = Post.find(params[:user_id])
     @categories = Category.order(post: :desc)
     erb :post
 end
 
+get '/delete'/user/:id do
+    User.destryoy(params[:id])
+    redirect '/user'
+end
+
+# delete '/user/:id' do
+#     User.destryoy(params[:id])
+#     redirect '/user'
+# end
 
 private 
 
