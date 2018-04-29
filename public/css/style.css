@@ -1,7 +1,9 @@
 
-
-@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Allura');
-
+body {
+    font-family: 'Courgette', cursive;
+    line-height: 2rem;
+    margin: 10px;
+}
 
 .nav-link {
     display: inline-block;
@@ -12,16 +14,33 @@
     padding-left: 10px;
 }
 
-.container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    height: 175px;
+.logo-container {
+    width: 50px;
+    margin-top: -25px;
+    padding-top: -50px;
+    /* padding-right: 15px;
+    padding-left: 15px;  
+    margin-left: -50px;
+    height: 100px;
+    */
 }
 
-img {
-    vertical-align: initial;
-    border-left-style: inherit;
+img{
+    /* position: relative;
+    border-style: none; 
+    vertical-align: middle;*/
+    display: inline-block;
+    left: =10px;
+    top: -70px;
+    width: 400px;
+    height: 250px;
+    
 }
+
+/* .column {
+    display: inline-block;
+    left: 30%;
+    top: -70px;
+    width: 100px;
+    height: 100px;
+} */
