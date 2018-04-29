@@ -1,5 +1,5 @@
 
-<form action="/user/user.id" method="POST">
+<form action="/user/<%= @this_user.id %>" method="POST">
 	<input type="hidden" name="_method" value="PUT">
 	<input type="text" name="birthday" value="<%= @this_user.birthday %>">
 	<input type="text" name="email" value="<%= @this_user.email %>">

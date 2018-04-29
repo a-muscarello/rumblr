@@ -58,17 +58,17 @@ put '/user/:id' do
     @this_user.update(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
 end
 
-get '/search' do
-    erb :search
+get '/users.rb' do
+    @this_user = User.find(session[:id])
+    # erb :edit
 end
 
-# get '/users.rb' do
-#     @this_user = User.find(session[:id])
-#     erb :edit
-# end
+get '/edit' do
+    @this_user = User.find(session[:id])
+    redirect '/users.rb'
+end
 
-
-# put '/edit' do
+# get '/edit' do
 #     User.find(session[:id])
 #     redirect '/users.rb'
 # end
@@ -79,18 +79,24 @@ put '/user/:id/edit' do
 end
 
 
-get '/new_post' do
-    erb :new_post
+delete '/user/:id' do
+    User.destryoy(params[:id])
+    redirect '/user'
 end
 
-
-get '/logout' do
-    erb :logout
-end
 
 post '/post/create/new' do
     Post.create(post_name: params[:post_name], post_content: params[:post_content], user_id:session[:id])
     redirect '/profile'
+end
+
+get '/new_post' do
+    erb :new_post
+end
+
+post '/post/submit' do
+    Post.create(params[:user_id])
+    redirect '/post'
 end
 
 get '/post/:user_id' do
@@ -99,12 +105,23 @@ get '/post/:user_id' do
     erb :post
 end
 
-get '/delete'/user/:id do
-    User.destryoy(params[:id])
-    redirect '/user'
+
+#to edit the post
+get '/post/:user_id' do
+    @posts = Post.find(params[:user_id])
+    erb :post
 end
 
-# delete '/user/:id' do
+get '/logout' do
+    erb :logout
+end
+
+
+get '/search' do
+    erb :search
+end
+
+# get '/delete'/user/:id do
 #     User.destryoy(params[:id])
 #     redirect '/user'
 # end

@@ -14,8 +14,8 @@
   <p>There are no posts containing the word(s) <%= params[:search] %>.</p>
 <% end %>
 
-
-def self.search(search)
-	where("name LIKE ?", "%#{search}%") 
-	where("content LIKE ?", "%#{search}%")
-end
+<br>
+# def self.search(search)
+# 	where("name LIKE ?", "%#{search}%") 
+# 	where("content LIKE ?", "%#{search}%")
+# end
