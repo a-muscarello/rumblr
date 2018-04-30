@@ -3,7 +3,8 @@ body {
     font-family: 'Courgette', cursive;
     line-height: 2rem;
     margin: 10px;
-    background-color: lightgrey;
+    background-image: url("/image/pyramid.jpg");
+    background-image: cover;
 }
 
 header {
@@ -16,11 +17,13 @@ h3, h5 {
 
 .nav-link {
     display: inline-block;
+    color: white;
 }
 
 .navbar-expand .navbar-nav .nav-link {
     padding-right: 25px;
     padding-left: 10px;
+    color: white;
 }
 
 .logo-container {
@@ -84,3 +87,4 @@ img{
     margin-bottom: 10px;
     margin-left: 20px;
 }
+

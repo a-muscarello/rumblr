@@ -17,12 +17,17 @@ get '/home' do
     erb :index
 end
 
-get '/about' do
-    erb :about
-end
 
 get '/signup' do
     erb :signup
+end
+
+get '/login' do
+    erb :login
+end 
+
+get '/about' do
+    erb :about
 end
 
 get '/thankyou' do
@@ -58,19 +63,19 @@ put '/user/:id' do
     @this_user.update(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
 end
 
-get '/users.rb' do
+get '/users' do
     @this_user = User.find(session[:id])
     # erb :edit
 end
 
 get '/edit' do
     @this_user = User.find(session[:id])
-    redirect '/users.rb'
+    erb :edit
 end
 
 # get '/edit' do
 #     User.find(session[:id])
-#     redirect '/users.rb'
+#     redirect '/users'
 # end
 
 put '/user/:id/edit' do
@@ -78,9 +83,12 @@ put '/user/:id/edit' do
     erb :edit
 end
 
+get '/delete' do
+    erb :delete
+end
 
 delete '/user/:id' do
-    User.destryoy(params[:id])
+    User.destroy(params[:id])
     redirect '/user'
 end
 
@@ -102,8 +110,9 @@ end
 
 get '/post/:user_id' do
     @posts = Post.find(params[:user_id])
-    @posts = Post.order('created_at: :desc').limit(20)
-    # @categories = Category.order(post: :desc)
+    @posts = Post.order("created_at DESC")
+    # @posts = Post.order('created_at: :desc').limit(20)
+    @categories = Category.order(post: :desc)
     erb :post
 end
 
@@ -123,10 +132,11 @@ get '/search' do
     erb :search
 end
 
-# get '/delete'/user/:id do
-#     User.destryoy(params[:id])
-#     redirect '/user'
-# end
+def self.search(search)
+	where("name LIKE ?", "%#{search}%") 
+	where("content LIKE ?", "%#{search}%")
+end
+
 
 private 
 

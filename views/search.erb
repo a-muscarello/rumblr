@@ -1,5 +1,4 @@
 
-
 <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
 <%= submit_tag "Search", :name => nil %>
@@ -15,7 +14,15 @@
 <% end %>
 
 <br>
-# def self.search(search)
-# 	where("name LIKE ?", "%#{search}%") 
-# 	where("content LIKE ?", "%#{search}%")
-# end
+
+# <form id="frmSearch" class="search-oneinfo" method="get" action="default.html" />
+#   <input class="search-one" id="textSearch" type="text" name="search_bar" size="31" maxlength="255" value="" style="left: 396px; top: 153px; width: 293px; height: 26px;" />
+#   <input class="search-two" type="submit" name="submission" value="Search" style=" padding-bottom:20px; left: 691px; top: 153px; height: 23px" />
+#   <input class="search-two" type="hidden" name="sitesearch" value="default.html" />
+
+# <script type="text/javascript">
+#     document.getElementById('frmSearch').onsubmit = function() {
+#         window.location = 'http://www.google.com/search?q=site:yoursitename.com ' + document.getElementById('txtSearch').value;
+#         return false;
+#     }
+# </script>

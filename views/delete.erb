@@ -1,10 +1,16 @@
 
-def destroy
-    User.transaction do
-      @user.posts.each do |p| 
-        p.comments.destroy_all
-      end
-      @user.comments.destroy_all
-      @user.posts.destroy_all
-      @user.destroy
-end
+<h3>We are sorry to see you go!</h3>
+
+<form action="/user/user_id" method="POST">
+	<input type="hidden" name="_method" value="DELETE">
+	
+</form>
+
+
+<div class="row">
+	<div class="column">
+	  <img class="responsive-img" id="fitness2" src="image/bangkok.jpg">
+	  <img class="responsive-img" id="solo1" src="image/beach.jpg">  
+	  <img class="responsive-img" id="venice" src="image/rome.jpg">  
+	</div>
+</div>

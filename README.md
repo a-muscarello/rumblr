@@ -27,4 +27,9 @@ Features:
 Bootstrap layout with flexbox structure.
 
 Acknowledgements: 
-ActiveRecord Pixabay Bootstrap 
+ActiveRecord 
+Pixabay 
+Bootstrap 
+w3schools
+Unsplash: 
+Jeremy Bishop, Max Williamson, Max Jakob, Nelson Piggosi Jr

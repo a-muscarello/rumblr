@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :post_name
       t.text :post_content
       t.integer :user_id
+      t.string :search
     end
   end
 end
