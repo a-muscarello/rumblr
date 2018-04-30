@@ -2,8 +2,8 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 
-require_relative './models/user'
-require_relative './models/post'
+require_relative './models/User'
+require_relative './models/Post'
 
 # set :database, {adapter: 'postgresql', database: 'rubytumbler'}
 
