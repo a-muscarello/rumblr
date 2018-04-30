@@ -3,6 +3,15 @@ body {
     font-family: 'Courgette', cursive;
     line-height: 2rem;
     margin: 10px;
+    background-color: lightgrey;
+}
+
+header {
+    margin-top: -50px;
+}
+
+h3, h5 {
+    margin: 10px;
 }
 
 .nav-link {
@@ -17,30 +26,55 @@ body {
 .logo-container {
     margin-top: -25px;
     padding-top: -50px;
-    /* padding-right: 15px;
-    padding-left: 15px;  
-    margin-left: -50px;
-    height: 100px;
-     width: 50px;
-    */
 }
 
 img{
-    /* position: relative;
-    border-style: none; 
-    vertical-align: middle;*/
     display: inline-block;
-    left: =10px;
+    left: -10px;
     top: -70px;
     width: 400px;
     height: 250px;
-    
+    border-radius: 8px;
+    margin-left: 10px;
 }
 
-/* .column {
-    display: inline-block;
-    left: 30%;
-    top: -70px;
-    width: 100px;
-    height: 100px;
-} */
+#mylogo {
+    width: 200px;
+    height: 250px;
+    margin-bottom: -30px;
+    border: none;
+}
+
+.page-footer {
+    display: flex;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(42, 43, 44);
+    color: darkgrey;
+    text-align: center;
+ }
+
+ .slideshow-content {
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+ }
+
+ .mySlides {
+     display:none;
+     height: auto;
+     width: 100%;
+     border-radius: 8px;
+}
+
+.textname {
+    box-shadow: seagreen;
+    margin-bottom: 10px;
+}
+
+#myPicture {
+    height: 300px;
+    width: 450px;
+}

@@ -1,4 +1,5 @@
 
+
 User.create(first_name: 'Tom', last_name: 'Brown', birthday: "5-5-1995", email: 'tbrown@yahoo.com', password: 'brownie55')
 User.create(first_name: 'Ivy', last_name: 'Doe', birthday: "2-10-1999", email: 'idoe@yahoo.com', password: 'doei17')
 

@@ -86,6 +86,7 @@ end
 
 
 post '/post/create/new' do
+    @posts = Post.limit(20)
     Post.create(post_name: params[:post_name], post_content: params[:post_content], user_id:session[:id])
     redirect '/profile'
 end
