@@ -5,7 +5,7 @@ require 'sinatra/activerecord'
 require_relative './models/user'
 require_relative './models/post'
 
-set :database, {adapter: 'postgresql', database: 'rubytumbler'}
+# set :database, {adapter: 'postgresql', database: 'rubytumbler'}
 
 enable :sessions
 
@@ -73,15 +73,15 @@ get '/edit' do
     erb :edit
 end
 
+put '/user/:id/edit' do
+    @this_user = User.find(session[:id])
+    erb :edit
+end
+
 # get '/edit' do
 #     User.find(session[:id])
 #     redirect '/users'
 # end
-
-put '/user/:id/edit' do
-    @this_user = User.find(params[:id])
-    erb :edit
-end
 
 get '/delete' do
     erb :delete
