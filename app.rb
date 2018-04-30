@@ -102,7 +102,8 @@ end
 
 get '/post/:user_id' do
     @posts = Post.find(params[:user_id])
-    @categories = Category.order(post: :desc)
+    @posts = Post.order('created_at: :desc').limit(20)
+    # @categories = Category.order(post: :desc)
     erb :post
 end
 
