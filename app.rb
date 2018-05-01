@@ -30,6 +30,7 @@ get '/about' do
     erb :about
 end
 
+
 get '/thankyou' do
     @user = User.find(session[:id])
     erb :thankyou
@@ -53,15 +54,10 @@ end
 
 get '/profile' do
     @user = User.find(session[:id])
-    @posts = Post.where(user_id: session[:id])
+    # @posts = Post.where(user_id: session[:id])
     erb :profile
 end
 
-
-put '/user/:id' do
-    @this_user = User.find(params[:id])
-    @this_user.update(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
-end
 
 get '/users' do
     @this_user = User.find(session[:id])
@@ -73,15 +69,14 @@ get '/edit' do
     erb :edit
 end
 
-put '/user/:id/edit' do
+put '/user/user_id' do
     @this_user = User.find(session[:id])
-    erb :edit
+    x = params[:birthday]
+    y = params[:email]
+    z = params[:password]
+    @this_user.update(birthday: x, email: y, password: z)
+    redirect '/profile'
 end
-
-# get '/edit' do
-#     User.find(session[:id])
-#     redirect '/users'
-# end
 
 get '/delete' do
     erb :delete
@@ -92,12 +87,16 @@ delete '/user/:id' do
     redirect '/user'
 end
 
-
-post '/post/create/new' do
-    @posts = Post.limit(20)
-    Post.create(post_name: params[:post_name], post_content: params[:post_content], user_id:session[:id])
-    redirect '/profile'
+get '/post' do
+    erb :post
 end
+
+# post '/post/create/new' do
+#     @posts = Post.where(user_id: session[:id])
+#     @posts = Post.limit(20)
+#     Post.create(post_name: params[:post_name], post_content: params[:post_content], user_id:session[:id])
+#     redirect '/profile'
+# end
 
 get '/new_post' do
     erb :new_post
@@ -107,6 +106,18 @@ post '/post/submit' do
     Post.create(params[:user_id])
     redirect '/post'
 end
+
+put '/post/user_id' do
+    @this_user = User.find(session[:id])
+    a = (post_name: params[:post_name], post_content: params[:post_content])
+    @this_user.update(post_name: a, post_content: a)
+    redirect '/post'
+end
+
+
+
+
+
 
 get '/post/:user_id' do
     @posts = Post.find(params[:user_id])
