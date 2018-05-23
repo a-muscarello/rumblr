@@ -1,25 +1,14 @@
 
-# <form action="/post/user_id" method="POST">
-# 	<input type="hidden" name="_method" value="PUT">
-# 	<input type="text" name="post_name" value="<%= a.post_name %>">
-# 	<input type="text" name="post_content" value="<%= a.post_content %>">
-# 	<button type="submit">Edit</button>
-# </form>
+<form action="/post/@post.id" method="post">
+	<input type="hidden" name="_method" value="PUT">
+	<input type="text" name="post_name" value="@post.post_name">
+	<input type="text" name="post_content" value=" @post.post_content">
+	<button type="submit">Edit</button>
+</form>
 
-<div class="row">
-	<div class="gallery">		
-	<% @posts.each do |a| %>
-		<h3> <%= a.post_name %> </h3>
-		<h5> <%= a.post_content %> </h5>
-		
-		<img class="responsive-img" src="/image/beijing.jpg">
-    <% end %> 
-    
-	</div>
-</div>
+<form action="/post/@post.id" method="post">
+	<input type="hidden" name="_method" value="DELETE">
+	<button type="submit">
+</form>
 
-# def self.search(search)
-# 	where("name LIKE ?", "%#{search}%") 
-# 	where("content LIKE ?", "%#{search}%")
-# end
 
