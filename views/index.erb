@@ -1,55 +1,43 @@
 
-<h3>Welcome to TravelBlog</h3>
-<h5>Please signup for a new account or login to access your account.</h5>
+    <% if @user != session[:id] %>
+        <h5>Welcome <%= @user.first_name %></h5>
+    <% else %>
+        <h5>Please signup for a new account or login to access your account.</h5>
+    <div class="login-info">
+        <a href="/user/login">Login</a> 
+        <a href="/signup">Signup</a> 
+    </div>
+    <% end %>
 
-<div class="login-info">
-    <a href="/login">Login</a> 
-    <a href="/signup">Signup</a> 
-</div>
+    <div class="slideshow-content" style="max-width:500px">
+        <img class="mySlides" src="/image/venice.jpg">
+        <img class="mySlides" src="/image/beach2.jpg">
+        <img class="mySlides" src="/image/peru.jpg">
+        <img class="mySlides" src="/image/beijing.jpg">
+        <img class="mySlides" src="/image/fitness2.jpg">
+        <img class="mySlides" src="/image/clear.jpg">
+    </div>
 
-<div class=nav1">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <form method="POST" action="/user/login">
-            <input type="email" name="email" placeholder="email">
-            <input type="password" name="password" placeholder="password">
-            <button type="submit" >Login</button>
-            <button type="reset" value="Reset">Reset</button>
-            </form>
-        </li>  
-    </ul>
-</div>
+    <div class="text">
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.</p>
+    </div>
 
+    <script>
+        var myIndex = 0;
+        carousel();
 
-<div class="slideshow-content" style="max-width:500px">
-  <img class="mySlides" src="/image/venice.jpg">
-  <img class="mySlides" src="/image/beach2.jpg">
-  <img class="mySlides" src="/image/peru.jpg">
-  <img class="mySlides" src="/image/beijing.jpg">
-  <img class="mySlides" src="/image/fitness2.jpg">
-  <img class="mySlides" src="/image/clear.jpg">
-</div>
-
-<div class="text">
-	<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.</p>
-</div>
-
-<script>
-    var myIndex = 0;
-    carousel();
-
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";  
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}    
+            x[myIndex-1].style.display = "block";  
+            setTimeout(carousel, 3000); 
         }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}    
-        x[myIndex-1].style.display = "block";  
-        setTimeout(carousel, 3000); 
-    }
-</script>
+    </script>
 
 </body>
 </html>
