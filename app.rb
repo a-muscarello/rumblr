@@ -7,9 +7,16 @@ require_relative './models/Post'
 
 # set :database, {adapter: 'postgresql', database: 'rubytumbler'}
 
-enable :sessions
+configure do
+    enable :sessions
+    set :sessions_secret, "wrenrrtgehjsdfjgksgkkg"
+end
 
 get '/' do
+    if User.exists?(:id => session[:id])
+        @user = User.find(session[:id])
+        erb :index
+    end
     erb :index
 end
 
@@ -19,10 +26,10 @@ end
 
 
 get '/signup' do
-    erb :signup
+    erb :index
 end
 
-get '/login' do
+get '/user/login' do
     erb :login
 end 
 
@@ -47,14 +54,14 @@ post '/user/login' do
 end
 
 post '/signup' do
-    @newuser = User.create(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
-    session[:id] = @newuser.id
+    @user = User.create(first_name: params[:first_name], last_name: params[:last_name], birthday: params[:birthday], email: params[:email], password: params[:password])
+    session[:id] = @user.id
     redirect '/thankyou'
 end
 
 get '/profile' do
     @user = User.find(session[:id])
-    # @posts = Post.where(user_id: session[:id])
+    @posts = Post.where(user_id: session[:id]).limit(20)
     erb :profile
 end
 
@@ -87,13 +94,10 @@ end
 delete '/user/:id' do
     @this_user = User.find(params[:id])
     @this_user.destroy
+    session.clear
     redirect '/user'
 end
 # renders post
-get '/post' do
-    @this_post = Post.where(user_id: session[:id])
-    erb :post
-end
 
 get '/post/user_id' do
     @this_user = User.find(params[:id])
@@ -106,7 +110,7 @@ end
 
 post '/post/create/new' do
     @posts = Post.where(user_id: session[:id])
-    @posts = Post.limit(20)
+    
     Post.create(post_name: params[:post_name], post_content: params[:post_content], user_id:session[:id])
     redirect '/profile'
 end
@@ -131,19 +135,27 @@ end
 #     erb :post
 # end
 
+get '/profile/:anything/edit' do
+        @post = Post.find(params[:anything])
+        erb :edit_post
+end    
 
 #to edit the post
-# put '/post/user_id/edit' do
-    # @posts = Post.find(session[:id])
-#     @this_user = User.find(session[:id])
-#     a = params[:post_name]
-#     b = params[:post_content]
-#     @this_user.update(post_name: a, post_content: b)
-#     redirect '/post'
-# end
+put '/profile/:post_id/edit' do
+    @post = Post.find(params[:post_id])
+    @post.update(post_name: params[:post_name], post_content: params[:post_content], user_id: session[:id])
+    redirect '/profile'
+end
+
+delete '/profile/:post_id/delete' do
+    @post = Post.find(params[:post_id])
+    @post.destroy
+    redirect '/profile'
+end
 
 get '/logout' do
-    erb :logout
+    session.clear
+     redirect '/'
 end
 
 

@@ -1,0 +1,13 @@
+
+
+<form action="/profile/<%= @post.id %>/edit" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="text" name="post_name" value="<%= @post.post_name %>">
+    <input type="text" name="post_content" value="<%= @post.post_content %>">
+    <button type="submit">Edit</button>
+</form>
+
+<form action="/profile/<%= @post.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">	
+    <button type="submit">Delete</button>
+</form>

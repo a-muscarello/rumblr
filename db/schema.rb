@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_04_25_230100) do
     t.string "post_name"
     t.text "post_content"
     t.integer "user_id"
+    t.string "search"
   end
 
   create_table "users", force: :cascade do |t|
