@@ -12,6 +12,7 @@ configure do
     set :sessions_secret, "wrenrrtgehjsdfjgksgkkg"
 end
 
+
 get '/' do
     if User.exists?(:id => session[:id])
         @user = User.find(session[:id])
@@ -26,7 +27,7 @@ end
 
 
 get '/signup' do
-    erb :index
+    erb :signup
 end
 
 get '/user/login' do
@@ -65,6 +66,11 @@ get '/profile' do
     erb :profile
 end
 
+delete '/profile/:post_id' do
+    @post = Post.find(params[:post_id])
+    @post.destroy
+    redirect '/profile'
+end
 
 get '/users' do
     @this_user = User.find(session[:id])
