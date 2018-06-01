@@ -9,6 +9,10 @@ Ruby - Sinatra, Rakefile
 ActiveRecord
 PostgreSQL
 
+https://mytravelblog.herokuapp.com/ 
+
+email : test@email.com
+password : test1234
 
 Work scope: 
 Created wireframe for the webpage layout. 
